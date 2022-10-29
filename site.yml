@@ -1,0 +1,9 @@
+---
+- name: Print text
+  hosts: all
+  become: yes
+  gather_facts: yes
+  
+  tasks:
+    - debug:
+        msg: "Just saying hello wtih ansible from AWX!"
