@@ -14,4 +14,4 @@
       
     - name: Storage Guid
       debug:
-        msg: "The SRUUID for VMs storage is {{ sruuid }}"
+        msg: "The SRUUID for VMs storage is {{ sruuid.stdout }}"
