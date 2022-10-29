@@ -11,7 +11,5 @@
     - name: Get UUID of share SR
       command: xe sr-list name-label="VMs" --minimal
       register: sruuid
-      
-    - name: Storage Guid
-      debug:
+      debug: 
         msg: "The SRUUID for VMs storage is {{ sruuid.stdout }}"
