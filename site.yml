@@ -7,3 +7,11 @@
   tasks:
     - debug:
         msg: "Just saying hello wtih ansible from AWX!"
+    
+    - name: Get UUID of share SR
+      command: xe sr-list name-label="VMs" --minimal
+      register: sruuid
+      
+    - name: Storage Guid
+      debug:
+        msg: "The SRUUID for VMs storage is {{ sruuid }}"
