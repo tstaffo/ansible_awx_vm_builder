@@ -17,7 +17,7 @@
       register: templateuuid
       
     - name: Get UUID of network
-      command: xe network-list name-label="Host internal management network"" --minimal
+      command: xe network-list name-label="Host internal management network" --minimal
       register: networkuuid
       
     - debug:
