@@ -21,14 +21,14 @@
       register: networkuuid
    
     - name: Create new VM
-      command: xe vm-install template={{ templateuuid.stdout  }} new-name-label={{ vmname }} sr-uuid={{ sruuid.stdout }}
+      command: xe vm-install template={{ templateuuid.stdout }} new-name-label={{ vmname }} sr-uuid={{ sruuid.stdout }}
       register: vmuuid
       
     - name: Boot VM and start preseed installation
       command: xe vm-start uuid={{ vmuuid.stdout }}
 
     - name: Get the boot time for the VM
-      command: xe vm-param-get param-name=start-time  uuid={{ vmuuid.stdout}}
+      command: xe vm-param-get param-name=start-time uuid={{ vmuuid.stdout}}
       register: boottime
       
     - name: Ge UUID pf VIF
