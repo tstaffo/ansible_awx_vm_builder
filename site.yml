@@ -23,6 +23,13 @@
     - name: Create new VM
       command: xe vm-install template={{ templateuuid.stdout  }} new-name-label={{ vmname }} sr-uuid={{ sruuid.stdout }}
       register: vmuuid
+      
+    - name: Ge UUID pf VIF
+      command: xe vm-vif-list vm={{ vmuuid.stdout }} --minimal
+      register: vifuuid
+      
+    - name: Set IP Address for VM
+      command: xe vif-configure-ipv4 uuid={{ vifuuid.stdout }} mode=static address={{ ipdaddress }}/24 gateway={{ gateway }}
    
     - debug:
-        msg: "Show VMName: {{ vmname }}"
+        msg: "Crated {{ vmname }} : {{ ipaddress }} : {{ gateway }}"
