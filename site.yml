@@ -16,5 +16,9 @@
       command: xe template-list name-label="ubuntu 22.04-cloudimg-ssh-tools" --minimal
       register: templateuuid
       
+    - name: Get UUID of network
+      command: xe network-list name-label="Host internal management network"" --minimal
+      register: networkuuid
+      
     - debug:
-        msg: "The template UUID is {{ templateuuid.stdout }}"
+        msg: "The template UUID is {{ networkuuid.stdout }}"
