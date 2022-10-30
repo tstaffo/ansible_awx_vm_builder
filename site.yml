@@ -17,4 +17,4 @@
       register: templateuuid
       
     - debug:
-        msg: "The template UUID is {{ templateuuid }}"
+        msg: "The template UUID is {{ templateuuid.stdout }}"
