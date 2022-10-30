@@ -21,7 +21,7 @@
       register: networkuuid
    
     - name: Create new VM
-      command: xe vm-install template={{ templateuuid }} new-name-label={{ vmname }} sr-uuid={{ sruuid.stdout }}
+      command: xe vm-install template={{ templateuuid.stdout  }} new-name-label={{ vmname }} sr-uuid={{ sruuid.stdout }}
       register: vmuuid
    
     - debug:
