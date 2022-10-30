@@ -21,4 +21,4 @@
       register: networkuuid
       
     - debug:
-        msg: "The template UUID is {{ networkuuid.stdout }}"
+        msg: "The network UUID is {{ networkuuid.stdout }}"
