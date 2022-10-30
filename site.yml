@@ -21,4 +21,4 @@
       register: networkuuid
       
     - debug:
-        msg: "The network UUID is {{ networkuuid.stdout }}"
+        msg: "Show VMName: {{ vmname }}"
