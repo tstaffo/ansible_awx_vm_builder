@@ -20,7 +20,7 @@
       command: xe network-list name-label="Host internal management network" --minimal
       register: networkuuid
    
-   - name: Create new VM {{ vmname }}
+   - name: Create new VM
     command: xe vm-install template="{{ templateuuid }}" new-name-label="{{ vmname }}"
    
     - debug:
