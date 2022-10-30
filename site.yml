@@ -24,9 +24,16 @@
       command: xe vm-install template={{ templateuuid.stdout  }} new-name-label={{ vmname }} sr-uuid={{ sruuid.stdout }}
       register: vmuuid
       
+    - name: Boot VM and start preseed installation
+      command: xe vm-start uuid={{ vmuuid.stdout }}
+
+    - name: Get the boot time for the VM
+      command: xe vm-param-get param-name=start-time  uuid={{ vmuuid.stdout}}
+      register: boottime
+      
     - name: Ge UUID pf VIF
       command: xe vm-vif-list vm={{ vmuuid.stdout }} --minimal
-      register: vifuuid
+      register: vifuuid      
       
     - name: Set IP Address for VM
       command: xe vif-configure-ipv4 uuid={{ vifuuid.stdout }} mode=static address={{ ipaddress }}/24 gateway={{ gateway }}
