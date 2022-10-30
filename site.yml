@@ -13,7 +13,7 @@
       register: sruuid
 
     - name: Get UUID of template
-      command: xe template-list name-label="ubuntu 22.04-cloudimg-ssh-tools" --minimal
+      command: xe template-list name-label="AlmaLinux 9" --minimal
       register: templateuuid
       
     - name: Get UUID of network
