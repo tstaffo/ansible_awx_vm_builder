@@ -11,4 +11,10 @@
     - name: Get UUID of share SR
       command: xe sr-list name-label="VMs" --minimal
       register: sruuid
-      msg: "The SRUUID for VMs storage is {{ sruuid.stdout }}"
+
+    - name: Get UUID of template
+      command: xe template-list name-label="ubuntu 22.04-cloudimg-ssh-tools" --minimal
+      register: templateuuid
+      
+    - debug:
+        msg: "The template UUID is {{ templateuuid }}"
