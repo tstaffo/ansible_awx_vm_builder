@@ -29,7 +29,7 @@
       register: vifuuid
       
     - name: Set IP Address for VM
-      command: xe vif-configure-ipv4 uuid={{ vifuuid.stdout }} mode=static address={{ ipdaddress }}/24 gateway={{ gateway }}
+      command: xe vif-configure-ipv4 uuid={{ vifuuid.stdout }} mode=static address={{ ipaddress }}/24 gateway={{ gateway }}
    
     - debug:
         msg: "Crated {{ vmname }} : {{ ipaddress }} : {{ gateway }}"
