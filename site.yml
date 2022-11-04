@@ -40,7 +40,7 @@
       register: tmpip
       until: tmpip.msg != "non-zero return code"
       retries: 10
-      delay: 5
+      delay: 10
    
     - debug:
         msg: "Temporary IP is {{ tmpip.stdout }}"
