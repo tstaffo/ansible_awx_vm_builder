@@ -36,7 +36,7 @@
       register: vifuuid
       
     - name: Get IP of VM
-      shell: xe vm-list params=networks name-label='test1' --minimal | grep -E -o '0\/ip: ([0-9]+.[0-9]+.[0-9]+.[0-9]+)' | awk '{print $2}'
+      shell: xe vm-list params=networks uuid={{ vmuuid.stdout }} --minimal | grep -E -o '0\/ip: ([0-9]+.[0-9]+.[0-9]+.[0-9]+)' | awk '{print $2}'
       register: tmpip
       until: tmpip.stdout != ""
       retries: 10
