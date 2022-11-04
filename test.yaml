@@ -6,7 +6,7 @@
   
   tasks:    
     - name: Get IP of VM
-      command: xe vm-list params=networks name-label='test1' --minimal | grep -E -o {{ '0\/ip: ([0-9]+.[0-9]+.[0-9]+.[0-9]+)' }} | awk '{print $2}' }}
+      command: xe vm-list params=networks name-label='test1' --minimal | grep -E -o "{{ '0\/ip: ([0-9]+.[0-9]+.[0-9]+.[0-9]+)' }}" | awk '{print $2}' }}
       register: tmpip
       until: tmpip.stdout != ""
       retries: 10
