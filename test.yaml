@@ -10,7 +10,7 @@
       register: tmpip | grep -E -o '0\/ip{{ ":"}} ([0-9]+.[0-9]+.[0-9]+.[0-9]+)' | awk '{print $2}'
       
     - name: Extract IP from result
-      shell: {{ tmpip.stdout }} | grep -E -o '0\/ip{{ ":"}} ([0-9]+.[0-9]+.[0-9]+.[0-9]+)' | awk '{print $2}'
+      shell: tmpip.stdout | grep -E -o '0\/ip{{ ":"}} ([0-9]+.[0-9]+.[0-9]+.[0-9]+)' | awk '{print $2}'
       register: test
    
     - debug:
