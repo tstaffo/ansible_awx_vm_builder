@@ -31,12 +31,13 @@
       command: xe vm-param-get param-name=start-time uuid={{ vmuuid.stdout}}
       register: boottime
       
-    - name: Ge UUID pf VIF
+    - name: Get UUID pf VIF
       command: xe vm-vif-list vm={{ vmuuid.stdout }} --minimal
-      register: vifuuid      
+      register: vifuuid
       
-    - name: Set IP Address for VM
-      command: xe vif-configure-ipv4 uuid={{ vifuuid.stdout }} mode=static address={{ ipaddress }}/24 gateway={{ gateway }}
+    - name: Get IP of VM
+      command: xe vm-list params=networks uuid={{ vmuuid.stdout }} --minimal | awk '{print $2}' | sed -r 's/;+$//'
+      register: tmpip
    
     - debug:
-        msg: "Crated {{ vmname }} : {{ ipaddress }} : {{ gateway }}"
+        msg: "Temporary IP is {{ tmpip }}"
